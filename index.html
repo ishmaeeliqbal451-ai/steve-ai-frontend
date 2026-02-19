@@ -188,6 +188,7 @@
 
     <script>
         const API_URL = 'https://ishmaeeliqbal451--steve-ai-chat.modal.run';
+        const API_KEY = '5kttRebAIXzvgggeeZrMm9ubOoMvd1sU3fiG7pQ-1Yo';
 
         // Generate a valid UUID v4 for session ID
         function generateUUID() {
@@ -227,7 +228,10 @@
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + API_KEY
+                    },
                     body: JSON.stringify({
                         session_id: SESSION_ID,
                         message: message
