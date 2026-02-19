@@ -228,13 +228,11 @@
 
                 const response = await fetch(API_URL, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + API_KEY
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         session_id: SESSION_ID,
-                        message: message
+                        message: message,
+                        authorization: 'Bearer ' + API_KEY
                     })
                 });
 
