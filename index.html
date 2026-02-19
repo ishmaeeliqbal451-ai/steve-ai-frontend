@@ -162,12 +162,23 @@
         }
 
         .message.assistant ul {
-            margin: 6px 0;
+            margin: 8px 0;
             padding-left: 20px;
         }
 
         .message.assistant li {
-            margin: 4px 0;
+            margin: 6px 0;
+            line-height: 1.5;
+        }
+
+        .message.assistant br + br {
+            display: block;
+            margin-top: 8px;
+            content: '';
+        }
+
+        .message {
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -275,8 +286,10 @@
                 // Bullet points (lines starting with -)
                 .replace(/^- (.+)$/gm, '<li>$1</li>')
                 // Wrap consecutive <li> in <ul>
-                .replace(/(<li>.*<\/li>(\n|$))+/gs, match => '<ul>' + match + '</ul>')
-                // Line breaks
+                .replace(/(<li>.*?<\/li>\n?)+/gs, match => '<ul>' + match + '</ul>')
+                // Double line breaks become paragraph breaks
+                .replace(/\n\n/g, '<br><br>')
+                // Single line breaks
                 .replace(/\n/g, '<br>');
         }
 
